@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 //Schema
 const schema = mongoose.Schema({
     _name:String,
-    _place:{type:Schema.ObjectId,ref:'place'},
+    _place:String,
     _description:String
 });
 
