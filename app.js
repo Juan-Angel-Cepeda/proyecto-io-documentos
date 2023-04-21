@@ -4,15 +4,20 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const {expressjwt} = require('express-jwt');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const institutionRouter = require('./routes/institutions');
 const placeRouter = require('./routes/places');
+const docuemtRouter = require('./routes/documents');
+
+//cambiar jwtkey
+const jwtkey = "0deec8e659b8b570e53e8d54244ea0f7"
 
 
 //mongodb conection
-const uri = "mongodb://localhost:27017/mongodb_time_tracer";
+const uri = "mongodb://localhost:27017/dockstory-db";
 mongoose.connect(uri);
 const db = mongoose.connection;
 
@@ -36,10 +41,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(expressjwt({secret:jwtkey, algorithms:['HS256']}))
+    .unless({path:["login"]})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/institutions',institutionRouter);
 app.use('/places',placeRouter);
+app.use('/doucuments',docuemtRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -13,7 +13,7 @@ class Institution{
         this._name = name;
         this._place = place;
         this._description = description
-    }
+    };
 
     get name(){
         return this._name;

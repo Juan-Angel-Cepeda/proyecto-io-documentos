@@ -8,7 +8,7 @@ const schema = mongoose.Schema({
     _street:String,
     _number:Number,
     _interior:String,
-    _cp:Number,
+    _zip:Number,
     _latitud:Number,
     _longitud:Number
 });
@@ -17,7 +17,7 @@ const schema = mongoose.Schema({
 
 class Place{
     constructor(
-        name,description,country,city,street,number,interior,cp,latitud,longitud
+        name,description,country,city,street,number,interior,zip,latitud,longitud
         ){
         this._name = name;
         this._description = description;
@@ -26,7 +26,7 @@ class Place{
         this._street = street;
         this._number = number;
         this._interior = interior;
-        this._cp = cp;
+        this._zip = zip;
         this._latitud = latitud;
         this._longitud = longitud;
     }
@@ -73,11 +73,11 @@ class Place{
     set interior(interior){
         this._interior = interior;
     }
-    get cp(){
-        return this._cp;
+    get zip(){
+        return this._zip;
     }
-    set cp(cp){
-        this._cp = cp;
+    set zip(zip){
+        this._zip = zip;
     }
     get latitud(){
         return this._latitud;
