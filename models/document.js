@@ -4,19 +4,37 @@ const schema = mongoose.Schema({
     _title:String,
     _date:Date,
     _description:String,
-    _fomat:String,
-    _map:{
+    _format:{
+        type:String,
+        enum:['LETTER','NEWSPAPER','PRINTED PUBLISH','CARD','OBJECT','BOOK'],
+        default:'LETTER'
+    },
+    _place:{
         type:mongoose.Schema.Objectid,
         ref: 'Place'
     },
-    _author: String, //Entity
-    _sender: String, //person
-    _reciver: String, //person
+    _author:{
+        type:mongoose.Schema.Objectid,
+        ref: 'Author'
+    },
+    _sender:{
+        type:mongoose.Schema.Objectid,
+        ref: 'Person'
+    },
+    _reciver:{
+        type:mongoose.Schema.Objectid,
+        ref: 'Person'
+    },
     _context: String,
-    _photos: String,
+    _photos:[{
+        type:String
+    }],
     _colection: String,
     _ubi: String,
-    _relations:String
+    _relations:[{
+        type:mongoose.Schema.Objectid,
+        ref:'Document'
+    }]
 });
 
 class Document{
