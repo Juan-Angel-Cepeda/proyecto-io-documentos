@@ -19,7 +19,9 @@ router.delete('/institution/:id',institutioncontroller.destroy);
 
 //RUTAS DE ADMINISTRACIÓN DE PLACES
 
-router.post('/places',controller.create);
-router.put('/places/:id',controller.replace);
-router.patch('/places/:id',controller.update);
-router.delete('/places/:id',controller.destroy);
+router.post('/places',placecontroller.create);
+router.put('/places/:id',placecontroller.replace);
+router.patch('/places/:id',placecontroller.update);
+router.delete('/places/:id',plcaecontroller.destroy);
+
+module.exports(router)

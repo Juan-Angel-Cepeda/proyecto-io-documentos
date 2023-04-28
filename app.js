@@ -10,7 +10,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const institutionRouter = require('./routes/institutions');
 const placeRouter = require('./routes/places');
-const docuemtRouter = require('./routes/documents');
+const docuementRouter = require('./routes/documents');
+const adminRouter = require('./routes/admin');
 
 //cambiar jwtkey
 const jwtkey = "0deec8e659b8b570e53e8d54244ea0f7"
@@ -48,7 +49,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/institutions',institutionRouter);
 app.use('/places',placeRouter);
-app.use('/doucuments',docuemtRouter);
+app.use('/doucuments',docuementRouter);
+app.use('/admin',adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

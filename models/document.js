@@ -53,19 +53,19 @@ class Document{
         ubi,
         relations
     ){
-        this._title = title,
-        this._date = date,
-        this._description = description,
-        this._fomat = format,
-        this._map = map,
-        this._author = author,
-        this._sender = sender,
-        this._reciver = reciver,
-        this._context = context,
-        this._photos =  photos,
-        this._colection = colection,
-        this._ubi = ubi,
-        this._relations = relations
+        this._title = title;
+        this._date = date;
+        this._description = description;
+        this._fomat = format;
+        this._map = map;
+        this._author = author;
+        this._sender = sender;
+        this._reciver = reciver;
+        this._context = context;
+        this._photos =  photos;
+        this._colection = colection;
+        this._ubi = ubi;
+        this._relations = relations;
     };
     // getters and setter methods
 }
