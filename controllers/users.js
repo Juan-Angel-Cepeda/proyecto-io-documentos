@@ -2,21 +2,12 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-function list(req, res, next) {
-    res.send('respond with a actor list');
-}
-
-function index(req, res, next) {
-    res.send(`respond with a index of a user= ${req.params.id}`);
-}
-
 async function create(req, res, next) {
     let name = req.body.name;
     let lastname = req.body.lastName;
     let email = req.body.email;
     let password = req.body.password;
 
-    //Generar el salt con las iteraciones para generar la cadena
     const salt = await bcrypt.genSalt(10);
 
     const passwordHash = await bcrypt.hash(password, salt);
@@ -49,6 +40,8 @@ function update(req, res, next) {
 function destroy(req, res, next) {
     res.send(`respond with a destory userr= ${req.params.id}`);
 }
+
+
 
 module.exports = { 
     list,

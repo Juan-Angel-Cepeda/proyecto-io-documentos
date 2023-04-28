@@ -38,4 +38,5 @@ function destroy(req,res,next){
 
 }
 
+
 module.exports = {list,index,create,replace,update,destroy};
