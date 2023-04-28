@@ -6,7 +6,6 @@ const controller = require('../controllers/institutions');
 router.get('/',controller.list);
 router.get('/:id',controller.index);
 
-
 module.exports = router;
 
 

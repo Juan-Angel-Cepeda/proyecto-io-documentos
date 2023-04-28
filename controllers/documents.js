@@ -1,7 +1,6 @@
 const express = require('express');
 const  {json} = require('express');
 const Document = require('../models/document');
-const Place = require('../models/place');
 const Author = require('../models/author');
 const Person = require('../models/person');
 const Place = require('../models/place');
@@ -65,7 +64,7 @@ async function create(req,res,next){
         relations:relation
     });
     
-    document.save().then(obj = res.status(200).json({
+    document.save().then(obj => res.status(200).json({
         message: "document created",
         obj:obj
     })).catch(ex => res.status(500).json({
@@ -120,7 +119,8 @@ async function replace(req,res,next){
                 message: "Document updates",
                 obj:obj
             })}).catch(ex => res.status(500).json({
-                message: "Docuemnt not updated"
+                message: "Docuemnt not updated",
+                err: ex
             }))
 }
 
@@ -188,6 +188,15 @@ async function update(req,res,next){
     if(relation){
         document._relations.push(relation)
     }
+
+    Document.findOneAndUpdate({"_id":id},document)
+            .then(obj => res.status(200).json({
+                message:"Document updated",
+                obj:obj
+            })).catch(ex => res.status(500).json({
+                message:"Document not updated",
+                err:ex
+            }))
 }
 
 function destroy(req,res,next){
@@ -197,7 +206,7 @@ function destroy(req,res,next){
         obj:obj
     })).catch(ex => res.status(500).json({
         message: "Document not deleted",
-        obj:ex
+        err:ex
     }))
 
 }

@@ -22,6 +22,6 @@ router.delete('/institution/:id',institutioncontroller.destroy);
 router.post('/places',placecontroller.create);
 router.put('/places/:id',placecontroller.replace);
 router.patch('/places/:id',placecontroller.update);
-router.delete('/places/:id',plcaecontroller.destroy);
+router.delete('/places/:id',placecontroller.destroy);
 
-module.exports(router)
+module.exports = router;

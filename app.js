@@ -42,14 +42,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(expressjwt({secret:jwtkey, algorithms:['HS256']}))
-    .unless({path:["login"]})
+app.use(expressjwt({secret:jwtkey, algorithms:['HS256']})
+    .unless({path:["/login","/institutions","/places","/documents","/"]}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/institutions',institutionRouter);
 app.use('/places',placeRouter);
-app.use('/doucuments',docuementRouter);
+app.use('/documents',docuementRouter);
 app.use('/admin',adminRouter);
 
 // catch 404 and forward to error handler

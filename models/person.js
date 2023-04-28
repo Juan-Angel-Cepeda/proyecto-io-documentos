@@ -6,23 +6,23 @@ const schema = mongoose.Schema({
     _date_of_birth:Date,
     _date_of_death:Date,
     _father:{
-        type:mongoose.Schema.Objectid,
+        type:mongoose.Schema.ObjectId,
         ref:'Person'
     },
     _mother:{
-        type:mongoose.Schema.Objectid,
+        type:mongoose.Schema.ObjectId,
         ref:'Person'
     },
     _children:[{
-        type:mongoose.Schema.Objectid,
+        type:mongoose.Schema.ObjectId,
         ref:'Person'
     }],
     _birth_place:{
-        type:mongoose.Schema.Objectid,
+        type:mongoose.Schema.ObjectId,
         ref:'Place'
     },
     _death_place:{
-        type:mongoose.Schema.Objectid,
+        type:mongoose.Schema.ObjectId,
         ref:'Place'
     }
 });
@@ -113,7 +113,6 @@ class Person{
     set death_place(value){
         this._death_place = value;
     }
-    //children, birthplace, deathplace
 }
 
 schema.loadClass(Person);

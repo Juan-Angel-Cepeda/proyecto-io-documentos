@@ -41,8 +41,6 @@ function destroy(req, res, next) {
     res.send(`respond with a destory userr= ${req.params.id}`);
 }
 
-
-
 module.exports = { 
     list,
     index,

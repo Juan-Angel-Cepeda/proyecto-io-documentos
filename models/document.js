@@ -10,20 +10,20 @@ const schema = mongoose.Schema({
         default:'LETTER'
     },
     _place:{
-        type:mongoose.Schema.Objectid,
-        ref: 'Place'
+        type:mongoose.Schema.ObjectId,
+        ref:'Place'
     },
     _author:{
-        type:mongoose.Schema.Objectid,
-        ref: 'Author'
+        type:mongoose.Schema.ObjectId,
+        ref:'Author'
     },
     _sender:{
-        type:mongoose.Schema.Objectid,
-        ref: 'Person'
+        type:mongoose.Schema.ObjectId,
+        ref:'Person'
     },
     _reciver:{
-        type:mongoose.Schema.Objectid,
-        ref: 'Person'
+        type:mongoose.Schema.ObjectId,
+        ref:'Person'
     },
     _context: String,
     _photos:[{
@@ -32,7 +32,7 @@ const schema = mongoose.Schema({
     _colection: String,
     _ubi: String,
     _relations:[{
-        type:mongoose.Schema.Objectid,
+        type:mongoose.Schema.ObjectId,
         ref:'Document'
     }]
 });
@@ -67,7 +67,98 @@ class Document{
         this._ubi = ubi;
         this._relations = relations;
     };
-    // getters and setter methods
+    
+    get title(){
+        return this._title;
+    }
+    set title(v){
+        this._title = v;
+    }
+    //date
+    get date(){
+        return this._date;
+    }
+    set date(v){
+        this._date = v;
+    }
+    //description
+    get description(){
+        return this._description;
+    }
+    set description(v){
+        this._description = v;
+    }
+    //format
+    get format(){
+        return this._format;
+    }
+    set format(v){
+        this._format = v;
+    }
+    //map
+    get map(){
+        return this._map;
+    }
+    set map(v){
+        this._map = v;
+    }
+    //author
+    get author(){
+        return this._author;
+    }
+    set author(v){
+        this._author = v;
+    }
+    //sender
+    get sender(){
+        return this._sender;
+    }
+    set sender(v){
+        this._sender = v;
+    }
+    //reciver
+    get reciver(){
+        return this._reciver;
+    }
+    set reciver(v){
+        this._reciver = v;
+    }
+    //context
+    get context(){
+        return this._context;
+    }
+    set context(v){
+        this._context = v;
+    }
+    //photos
+    get photos(){
+        return this._photos;
+    }
+    set photos(v){
+        this._photos = v;
+    }
+    //colection
+    get colection(){
+        return this._colection;
+    }
+    set colection(v){
+        this._colection = v;
+    }
+    //ubi
+    get ubi(){
+        return this._ubi;
+    }
+    set ubi(v){
+        this._ubi = v;
+    }
+
+    //relations
+    get relations(){
+        return this._relations;
+    }
+    set relations(v){
+        this._relations = v;
+    }
 }
 
 schema.loadClass(Document);

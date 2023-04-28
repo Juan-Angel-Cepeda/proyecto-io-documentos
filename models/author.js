@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
     _author:{
-        type:mongoose.Schema.Objectid,
+        type:mongoose.Schema.ObjectId,
         refPath:'_authorModel'
     },
     _authorModel:{
