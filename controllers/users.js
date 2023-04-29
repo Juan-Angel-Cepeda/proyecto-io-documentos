@@ -29,23 +29,6 @@ async function create(req, res, next) {
         }));
 }
 
-function replace(req, res, next) {
-    res.send(`respond with a replace userr= ${req.params.id}`);
-}
-
-function update(req, res, next) {
-    res.send(`respond with a update userr = ${req.params.id}`);
-}
-
-function destroy(req, res, next) {
-    res.send(`respond with a destory userr= ${req.params.id}`);
-}
-
 module.exports = { 
-    list,
-    index,
-    create,
-    replace,
-    update,
-    destroy
+    create
 };

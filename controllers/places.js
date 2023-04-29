@@ -23,6 +23,36 @@ function index(req, res, next){
 };
 
 function create(req,res,next){
+    const name = req.body.name
+    const description = req.body.description
+    const country = req.body.country
+    const city = req.body.description
+    const street = req.body.street
+    const number = req.body.number
+    const interior = req.body.interior
+    const zip = req.body.zip
+    const latitud = req.body.latitud
+    const longitud = req.body.longitud
+
+    let place = new Place({
+        name:name,
+        description:description,
+        country:country,
+        city:city,
+        street:street,
+        number:number,
+        interionr:interior,
+        zip:zip,
+        latitud:latitud,
+        longitud:longitud
+    })
+    place.save().then(obj=>res.status(200).json({
+        message:"Place created",
+        obj:obj
+    })).catch(ex => res.status(500).json({
+        message:"Place not created",
+        err:ex
+    }))
 
 }
 

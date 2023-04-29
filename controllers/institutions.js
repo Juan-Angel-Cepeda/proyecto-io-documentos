@@ -26,7 +26,7 @@ function index(req, res, next){
 
 async function create(req,res,next){
     const name = req.body.name;
-    const placeId = req.body.palceId;
+    const placeId = req.body.placeId;
     const description = req.body.description;
     
     let place = await Place.findOne({"_id":placeId});

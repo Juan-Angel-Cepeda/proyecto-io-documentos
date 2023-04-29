@@ -7,23 +7,23 @@ const schema = mongoose.Schema({
     _date_of_death:Date,
     _father:{
         type:mongoose.Schema.ObjectId,
-        ref:'Person'
+        ref:'People'
     },
     _mother:{
         type:mongoose.Schema.ObjectId,
-        ref:'Person'
+        ref:'People'
     },
     _children:[{
         type:mongoose.Schema.ObjectId,
-        ref:'Person'
+        ref:'People'
     }],
     _birth_place:{
         type:mongoose.Schema.ObjectId,
-        ref:'Place'
+        ref:'People'
     },
     _death_place:{
         type:mongoose.Schema.ObjectId,
-        ref:'Place'
+        ref:'People'
     }
 });
 
@@ -116,4 +116,4 @@ class Person{
 }
 
 schema.loadClass(Person);
-module.exports = mongoose.model('Person',schema);
+module.exports = mongoose.model('People',schema);

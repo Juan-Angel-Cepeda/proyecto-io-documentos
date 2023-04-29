@@ -12,10 +12,9 @@ const institutionRouter = require('./routes/institutions');
 const placeRouter = require('./routes/places');
 const docuementRouter = require('./routes/documents');
 const adminRouter = require('./routes/admin');
+const peopleRouter = require('./routes/people');
 
-//cambiar jwtkey
 const jwtkey = "0deec8e659b8b570e53e8d54244ea0f7"
-
 
 //mongodb conection
 const uri = "mongodb://localhost:27017/dockstory-db";
@@ -42,8 +41,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(expressjwt({secret:jwtkey, algorithms:['HS256']})
-    .unless({path:["/login","/institutions","/places","/documents","/"]}));
+//app.use(expressjwt({secret:jwtkey, algorithms:['HS256']})
+//   .unless({path:["/login","/institutions","/places","/documents","/","/people"]}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -51,6 +50,7 @@ app.use('/institutions',institutionRouter);
 app.use('/places',placeRouter);
 app.use('/documents',docuementRouter);
 app.use('/admin',adminRouter);
+app.use('/people',peopleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

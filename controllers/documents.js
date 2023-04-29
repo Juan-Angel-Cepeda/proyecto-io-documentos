@@ -212,7 +212,6 @@ function destroy(req,res,next){
 }
 function addPhotos(req,res,next){
     const id = req.body.id;
-
     return photos
 }
 function deletePhotos(req,res,next){
