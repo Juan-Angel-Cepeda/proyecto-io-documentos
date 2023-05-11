@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/adminForm.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <title>Add document</title>
+</head>
+<body>
+    <section>
+        <header>
+            <a href="index.html" class="logo"><img src="source/TTlogo2.png" alt="TimeTracer" width="90px" height="85px"></a>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="inicio.html">Documents</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="adminForm.html">Admin</a></li>
+            </ul>
+        </header>
+        <div class="container">
+            <form action="/add-new-document" method="post">
+                <div style="margin: 20px; background-color: #fff; padding: 20px;">
+                    <h2>Crear nuevo registro</h2>
+                    <form>
+                      <label for="titulo">Título:</label>
+                      <input type="text" id="titulo" name="titulo"><br>
+                  
+                      <label for="fecha">Fecha:</label>
+                      <input type="date" id="fecha" name="fecha"><br>
+                  
+                      <label for="descripcion">Descripción:</label><br>
+                      <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea><br>
+                  
+                      <label for="formato">Formato:</label>
+                      <select name="format" id="doc_format" default="Select format">
+                        <option value="default" selected>Pick a format</option>
+                        <option value="leter">Carta</option>
+                        <option value="paper">Periodico</option>
+                        <option value="publication">Publicacion Impresa</option>
+                        <option value="card">Tarjeta</option>
+                        <option value="book">Libro</option>
+                        <option value="object">Objeto</option>
+                      </select><br>
+                  
+                      <label for="coordenadas">Coordenadas:</label>
+                      <input type="text" id="coordenadas" name="coordenadas"><br>
+                  
+                      <label for="autor">Autor:</label>
+                      <input type="text" id="autor" name="autor"><br>
+                  
+                      <label for="emisor">Emisor:</label>
+                      <input type="text" id="emisor" name="emisor"><br>
+                  
+                      <label for="receptor">Receptor:</label>
+                      <input type="text" id="receptor" name="receptor"><br>
+                  
+                      <label for="contexto">Contexto:</label>
+                      <input type="text" id="contexto" name="contexto"><br>
+                  
+                      <label for="contenido">Contenido:</label>
+                      <input type="file" id="contenido" name="contenido"><br>
+                  
+                      <label for="coleccion">Colección:</label>
+                      <input type="text" id="coleccion" name="coleccion"><br>
+                  
+                      <input type="submit" value="Guardar">
+                    </form>
+                  </div>
+                  
+            </form>
+        </div>
+    </section>
+</body>
+</html>
