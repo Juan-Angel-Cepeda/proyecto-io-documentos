@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/inicioStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <title>TimeTracer</title>
+</head>
+<body>
+    <section>
+        <header>
+            <a href="index.html" class="logo"><img src="source/TTlogo2.png" alt="TimeTracer" width="90px" height="85px"></a>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inicio.html">Documents</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </header>
+        <div class="search">
+            <h1>Search!</h1>
+            <p>Look for the exact document you'r looking for!</p>
+
+            <form action="search">
+                <div class="textBox">
+                    <input type="text" placeholder="Document name">
+                    <input type="text" placeholder="Author">
+                    <select name="year" id="docYear" default="Select year">
+                        <option value="default" selected>Pick a year</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                    </select>
+                    <select name="place" id="">
+                        <option value="default" selected>Pick a place</option>
+                        <option value="london">London</option>
+                        <option value="westminster">Westminster</option>
+                        <option value="richmond">Richmond</option>
+                        <option value="bexley">Brexley</option>
+                    </select>
+                    <br>
+                    <a href="#">Search</a>
+                </div>
+            </form>
+        </div>
+        <div class="flex-container">
+            <h1>Here we have the documents available right now</h1>
+            <a href="document.html"><div class="caja c1">Doc 1</div></a>
+            <a href="document.html"><div class="caja c2">Doc 2</div></a>
+            <a href="document.html"><div class="caja c3">Doc 3</div></a>
+            <a href="document.html"><div class="caja c4">Doc 4</div></a>
+            <a href="document.html"><div class="caja c5">Doc 5</div></a>
+            <a href="document.html"><div class="caja c6">Doc 6</div></a>
+            <a href="document.html"><div class="caja c7">Doc 7</div></a>
+            <a href="document.html"><div class="caja c8">Doc 8</div></a>
+            <a href="document.html"><div class="caja c8">Doc 9</div></a>
+            <a href="document.html"><div class="caja c8">Doc 10</div></a>
+            <a href="document.html"><div class="caja c8">Doc 11</div></a>
+            <a href="document.html"><div class="caja c8">Doc 12</div></a>
+        </div>
+    </section>
+    <div class="footer">
+        <p>© 2023 TimeTracer</p>
+    </div>
+</body>
+</html>
