@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const {expressjwt} = require('express-jwt');
+const config = require('config');
+//const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -14,10 +16,11 @@ const docuementRouter = require('./routes/documents');
 const adminRouter = require('./routes/admin');
 const peopleRouter = require('./routes/people');
 
-const jwtkey = "0deec8e659b8b570e53e8d54244ea0f7"
+const jwtKey = config.get('secret.key');
 
 //mongodb conection
-const uri = "mongodb://localhost:27017/dockstory-db";
+const uri = config.get('dbChain');
+
 mongoose.connect(uri);
 const db = mongoose.connection;
 

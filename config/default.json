@@ -1,0 +1,5 @@
+{
+    "secret":{
+    "key":"0deec8e659b8b570e53e8d54244ea0f7"
+    },"dbChain":"mongodb+srv://datalomx:M9Ibaw4xygL1cJMz@cluster0.cf9hsao.mongodb.net/?retryWrites=true&w=majority"
+}
