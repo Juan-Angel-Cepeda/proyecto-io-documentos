@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 async function create(req, res, next) {
+    
     let name = req.body.name;
     let lastname = req.body.lastName;
     let email = req.body.email;

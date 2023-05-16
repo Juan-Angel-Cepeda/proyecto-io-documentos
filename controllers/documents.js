@@ -210,7 +210,7 @@ function destroy(req,res,next){
     }))
 
 }
-function addPhotos(req,res,next){
+async function addPhotos(req,res,next){
     const id = req.body.id;
     return photos
 }

@@ -116,4 +116,4 @@ class Person{
 }
 
 schema.loadClass(Person);
-module.exports = mongoose.model('People',schema);
+module.exports = mongoose.model('Person',schema);
