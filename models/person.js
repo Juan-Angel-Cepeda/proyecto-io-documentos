@@ -19,11 +19,11 @@ const schema = mongoose.Schema({
     }],
     _birth_place:{
         type:mongoose.Schema.ObjectId,
-        ref:'People'
+        ref:'Place'
     },
     _death_place:{
         type:mongoose.Schema.ObjectId,
-        ref:'People'
+        ref:'Place'
     }
 });
 
@@ -90,7 +90,7 @@ class Person{
         return this._mother;
     }
     set mother(value){
-        this.mother = value;
+        this._mother = value;
     }
 
     get children(){

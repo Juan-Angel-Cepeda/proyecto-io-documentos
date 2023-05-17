@@ -4,7 +4,7 @@ const Place = require('../models/place');
 
 
 function list(req, res, next){
-    Institution.find().then(objs => res.status(200).json({
+    Institution.find().populate("_place").then(objs => res.status(200).json({
         message:"Institutions List",
         obj:objs
     })).catch(ex => res.status(500).json({
@@ -15,7 +15,7 @@ function list(req, res, next){
 
 function index(req, res, next){
     const id = req.params.id;
-    Institution.findOne({"_id":id}).then(obj => res.status(200).json({
+    Institution.findOne({"_id":id}).populate("_place").then(obj => res.status(200).json({
         message: `Institution with ID ${id}`,
         obj:obj
     })).catch(ex => res.status(500).json({

@@ -3,7 +3,7 @@ const Place = require('../models/place');
 const Person = require('../models/person');
 
 function list(req, res, next){
-    Person.find().then(objs => res.status(200).json({
+    Person.find().populate("_birth_place _death_place _father _mother _children").then(objs => res.status(200).json({
         message:"Person List",
         obj:objs
     })).catch(ex => res.status(500).json({
@@ -14,7 +14,7 @@ function list(req, res, next){
 
 function index(req, res, next){
     const id = req.params.id;
-    Person.findOne({"_id":id}).then(obj => res.status(200).json({
+    Person.findOne({"_id":id}).populate("_birth_place _death_place _father _mother _children").then(obj => res.status(200).json({
         message: `Place with ID ${id}`,
         obj:obj
     })).catch(ex => res.status(500).json({
@@ -37,9 +37,10 @@ async function create(req,res,next){
     const birth_place_id = req.body.birth_place_id;
     const death_place_id = req.body.death_place_id;
 
+
     let father = await Person.findOne({"_id":fatherId});
     let mother = await Person.findOne({"_id":motherId});
-    let children = await Person.findOne({"_id":motherId});
+    let children = await Person.findOne({"_id":childrenId});
     let birth_place = await Place.findOne({"_id":birth_place_id});
     let death_place = await Place.findOne({"_id":death_place_id});
 

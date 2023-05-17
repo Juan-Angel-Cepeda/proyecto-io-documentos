@@ -8,7 +8,7 @@ const schema = mongoose.Schema({
     _street:String,
     _number:Number,
     _interior:String,
-    _zip:Number,
+    _zip:String,
     _latitud:Number,
     _longitud:Number
 });

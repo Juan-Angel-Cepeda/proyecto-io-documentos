@@ -6,7 +6,7 @@ const Person = require('../models/person');
 const Place = require('../models/place');
 
 function list(req, res, next){
-    Document.find().then(objs => res.status(200).json({
+    Document.find().populate("_place _author _sender _reciver _relations").then(objs => res.status(200).json({
         message:"Document List",
         obj:objs
     })).catch(ex => res.status(500).json({
@@ -17,7 +17,7 @@ function list(req, res, next){
 
 function index(req, res, next){
     const id = req.params.id;
-    Document.findOne({"_id":id}).then(obj => res.status(200).json({
+    Document.findOne({"_id":id}).populate("_place _author _sender _reciver _relations").then(obj => res.status(200).json({
         message: `Document with ID ${id}`,
         obj:obj
     })).catch(ex => res.status(500).json({

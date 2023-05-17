@@ -228,6 +228,13 @@ function destroy(req,res,next){
             }));
 }
 function getMapsCoordenates(req,res,next){
+    Place.find().then(objs => res.status(200).json({
+        message:"Coordenates List",
+        obj:objs
+    })).catch(ex => res.status(500).json({
+        message: "Error no info",
+        obj:ex
+    }));
 
 }
 
