@@ -67,12 +67,92 @@ async function create(req,res,next){
 }
 
 function replace(req,res,next){
+    const id = req.params.id;
+    let name = req.body.name ? req.body.name:"";
+    let lastName = req.body.lastName ? req.body.lastName:"";
+    let date_of_birth = req.body.date_of_birth ? req.body.date_of_birth:"";
+    let date_of_death = req.body.date_of_death ? req.body.date_of_death:"";
+    let father = req.body.father ? req.body.father:"";
+    let mother = req.body.mother ? req.body.mother:"";
+    let children = req.body.children ? req.body.children:"";
+    let birth_place = req.body.birth_place ? req.body.birth_place:"";
+    let death_place = req.body.death_place ? req.body.death_place:"";
 
+    let person = new Person({
+        _name:name,
+        _lastName:lastName,
+        _date_of_birth:date_of_birth,
+        _date_of_death:date_of_death,
+        _father:father,
+        _mother:mother,
+        _children:children,
+        _birth_place:birth_place,
+        _death_place:death_place,
+    })
+
+    Place.findOneAndUpdate({"_id":id},place)
+            .then(obj => res.status(200).json({
+                message:"Place updated",
+                obj:obj
+            }).catch(ex => res.status(500).json({
+                message:"Error no info",
+                obj:ex
+            })));
 }
 
 function update(req,res,next){
 
+    const id = req.params.id;
+    let name = req.body.name ? req.body.name:"";
+    let lastName = req.body.lastName ? req.body.lastName:"";
+    let date_of_birth = req.body.date_of_birth ? req.body.date_of_birth:"";
+    let date_of_death = req.body.date_of_death ? req.body.date_of_death:"";
+    let father = req.body.father ? req.body.father:"";
+    let mother = req.body.mother ? req.body.mother:"";
+    let children = req.body.children ? req.body.children:"";
+    let birth_place = req.body.birth_place ? req.body.birth_place:"";
+    let death_place = req.body.death_place ? req.body.death_place:"";
+
+    let person = new Object();
+
+    if(name){
+        person._name = name;
+    }
+    if(lastName){
+        person._lastName = lastName;
+    }
+    if(date_of_birth){
+        person._date_of_birth = date_of_birth;
+    }
+    if(date_of_death){
+        person._date_of_death = date_of_death;
+    }
+    if(father){
+        person._father = father;
+    }
+    if(mother){
+        person._mother = mother;
+    }
+    if(children){
+        person._children = children;
+    }
+    if(birth_place){
+        person._birth_place = birth_place;
+    }
+    if(death_place){
+        person._death_place = death_place;
+    }
+
+    Place.findOneAndUpdate({"_id": id}, person)
+            .then(obj => res.status(200).json({
+                message:"Place updated",
+                obj:obj
+            })).catch(ex => res.status(500).json({
+                message:"Error no info",
+                obj:ex
+            }));
 }
+
 
 function destroy(req,res,next){
 
