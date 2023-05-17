@@ -5,7 +5,7 @@ const User = require('../models/user');
 const config = require('config');
 
 function home(req, res, next){
-    res.render('index', {title: 'Express'});
+    res.render('index', {title: 'Servidor DocStory'});
 }
 
 function login(req, res, next){
