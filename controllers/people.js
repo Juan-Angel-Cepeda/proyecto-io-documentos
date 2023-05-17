@@ -39,8 +39,7 @@ async function create(req,res,next){
 
     let father = await Person.findOne({"_id":fatherId});
     let mother = await Person.findOne({"_id":motherId});
-    let children = addChildren(childrenId);
-
+    let children = await Person.findOne({"_id":motherId});
     let birth_place = await Place.findOne({"_id":birth_place_id});
     let death_place = await Place.findOne({"_id":death_place_id});
 
@@ -90,9 +89,9 @@ function replace(req,res,next){
         _death_place:death_place,
     })
 
-    Place.findOneAndUpdate({"_id":id},place)
+    Person.findOneAndUpdate({"_id":id},person)
             .then(obj => res.status(200).json({
-                message:"Place updated",
+                message:"Person updated",
                 obj:obj
             }).catch(ex => res.status(500).json({
                 message:"Error no info",
@@ -143,7 +142,7 @@ function update(req,res,next){
         person._death_place = death_place;
     }
 
-    Place.findOneAndUpdate({"_id": id}, person)
+    Person.findOneAndUpdate({"_id": id}, person)
             .then(obj => res.status(200).json({
                 message:"Place updated",
                 obj:obj
@@ -155,7 +154,15 @@ function update(req,res,next){
 
 
 function destroy(req,res,next){
-
+    const id = req.params.id;
+    Person.findOneAndRemove({"_id":id})
+          .then(obj => res.status(200).json({
+            message:"Person deleted",
+            obj:obj
+          })).catch(ex => res.status(500).json({
+            message:"Person not deleted",
+            err:ex
+          }))
 }
 
 function addChildren(req,res,next){

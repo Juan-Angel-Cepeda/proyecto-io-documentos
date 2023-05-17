@@ -249,6 +249,7 @@ function addRelations(req,res,next){
     return relations
 }
 
+//fucniones de buscar por algo
 function searchBy(){
 
 }
