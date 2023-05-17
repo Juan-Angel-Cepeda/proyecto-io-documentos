@@ -36,17 +36,19 @@ async function create(req,res,next){
     const authorId = req.body.authorId;
     const emisorId = req.body.emisorId;
     const receptorId = req.body.receptorId;
-    const photos = addPhotos(req.body.phothoPath);
+    const photos = req.body.phothoPath;
     const context = req.body.context;
     const colection = req.body.colection;
     const ubi = req.body.ubi;
-    const relation = addRelations(req.body.relationId);
+    const relationId = req.body.relationId;
 
     
     let map = await Place.findOne({"_id":placeId});
     let author = await Author.findOne({"_id":authorId});
     let emisor = await Person.findOne({"_id":emisorId});
     let receptor = await Person.findOne({"id":receptorId});
+    let relation = await Person.findOne({"_id":relationId});
+
 
     let document = new Document({
         title:title,
@@ -90,8 +92,8 @@ async function replace(req,res,next){
     let ubi = req.body.ubi ? req.body.ubi: ""
     let relationId = req.body.relation ? req.body.relationId: ""
 
-    let photos = addPhotos(photosPath);
-    let relations = addRelations(relationId);
+    let photos = req.body.photopath;
+    let relations = addRelations(id,relationId);
 
     let map = await Place.findOne({"_id":placeId})
     let author = await Author.findOne({"_id":authorId});
@@ -211,11 +213,33 @@ function destroy(req,res,next){
 
 }
 async function addPhotos(req,res,next){
-    const id = req.body.id;
-    return photos
+    const id = req.params.id;
+    const phothoPath = req.body.photopath;
+    let document = await Document.findOne({"_id":id});
+    document.phothos.push(phothoPath);
+    await document.save().then(obj=>res.status(200).json({
+        message:'Photo added',
+        obj:obj
+    })).catch(ex => res.status(500).json({
+        message:"Photo not added",
+        err:ex
+    }));
+
 }
-function deletePhotos(req,res,next){
-    return photos
+async function deletePhotos(req,res,next){
+    const id = req.params.id;
+    const phothoPath = req.body.phothoPath;
+    const document = await Document.findById({"_id":id});
+    const photoIndex = document.phothos.indexOf(phothoPath);
+    document.phothos.splice(photoIndex,1);
+    await document.save().then(obj=>res.status(200).json({
+        message:"Photo deleted",
+        obj:obj
+    })).catch(ex => res.status(500).json({
+        message:"Photo not deleted",
+        err:ex
+    }))
+    
 }
 function deleteRelations(req,res,next){
     return relations
@@ -223,6 +247,10 @@ function deleteRelations(req,res,next){
 
 function addRelations(req,res,next){
     return relations
+}
+
+function searchBy(){
 
 }
-module.exports = {list,index,create,replace,update,destroy,deletePhotos,deleteRelations,addRelations};
+module.exports = {list,index,create,replace,update,destroy,deletePhotos,deleteRelations,addRelations,
+addPhotos};
