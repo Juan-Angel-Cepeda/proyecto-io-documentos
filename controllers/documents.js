@@ -34,19 +34,19 @@ async function create(req,res,next){
     const format = req.body.format;
     const placeId = req.body.placeId;
     const authorId = req.body.authorId;
-    const emisorId = req.body.emisorId;
-    const receptorId = req.body.receptorId;
-    const photos = req.body.phothoPath;
+    const senderId = req.body.senderId;
+    const reciverId = req.body.reciverId;
     const context = req.body.context;
+    const photos = req.body.phothoPath;
     const colection = req.body.colection;
     const ubi = req.body.ubi;
     const relationId = req.body.relationId;
 
     
     let map = await Place.findOne({"_id":placeId});
-    let author = await Author.findOne({"_id":authorId});
-    let emisor = await Person.findOne({"_id":emisorId});
-    let receptor = await Person.findOne({"id":receptorId});
+    let author = await Person.findOne({"_id":authorId});
+    let sender = await Person.find({"_id":senderId});
+    let reciver = await Person.findOne({"_id":reciverId});
     let relation = await Person.findOne({"_id":relationId});
 
 
@@ -55,10 +55,10 @@ async function create(req,res,next){
         date:date,
         description:description,
         format:format,
-        map:map,
+        place:map,
         author:author,
-        emisor:emisor,
-        receptor:receptor,
+        sender:sender,
+        reciver:reciver,
         context:context,
         phothos:photos,
         colection:colection,

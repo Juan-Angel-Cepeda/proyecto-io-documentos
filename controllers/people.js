@@ -3,12 +3,12 @@ const Place = require('../models/place');
 const Person = require('../models/person');
 
 function list(req, res, next){
-    Person.find().populate("_birth_place _death_place _father _mother _children").then(objs => res.status(200).json({
+    Person.find().populate("_birth_place _death_place").then(objs => res.status(200).json({
         message:"Person List",
         obj:objs
     })).catch(ex => res.status(500).json({
         message: "Error no info",
-        obj:ex
+        err:ex
     }));
 };
 
