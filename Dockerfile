@@ -3,4 +3,4 @@ WORKDIR /APP
 COPY . .
 RUN npm install
 EXPOSE 3000
-CMD npm START
+CMD npm run dev
