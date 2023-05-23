@@ -6,7 +6,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const {expressjwt} = require('express-jwt');
 const config = require('config');
-//const cors = require('cors');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -44,6 +44,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors({
+  origin: 'http://localhost:8080',
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 //app.use(expressjwt({secret:jwtkey, algorithms:['HS256']})
 //   .unless({path:["/login","/institutions","/places","/documents","/","/people"]}));
