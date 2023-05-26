@@ -16,7 +16,7 @@ const docuementRouter = require('./routes/documents');
 const adminRouter = require('./routes/admin');
 const peopleRouter = require('./routes/people');
 
-const jwtKey = config.get('secret.key');
+//const jwtKey = config.get('secret.key');
 
 //mongodb conection
 const uri = config.get('dbChain');
@@ -45,7 +45,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-  origin: 'http://localhost:8080'
+  origin: 'https://doc-story.netlify.app/'
 }));
 
 //app.use(expressjwt({secret:jwtkey, algorithms:['HS256']})
