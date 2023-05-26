@@ -6,7 +6,7 @@ const schema = mongoose.Schema({
     _description:String,
     _format:{
         type:String,
-        enum:['LETTER','NEWSPAPER','PRINTED PUBLISH','CARD','OBJECT','BOOK'],
+        enum:['LETTER','NEWSPAPER','PRINTED PUBLISH','CARD','OBJECT','BOOK','PICTURE'],
         default:'LETTER'
     },
     _place:{
@@ -43,7 +43,7 @@ class Document{
         date,
         description,
         format,
-        map,
+        place,
         author,
         sender,
         reciver,
@@ -57,7 +57,7 @@ class Document{
         this._date = date;
         this._description = description;
         this._fomat = format;
-        this._map = map;
+        this._place = place;
         this._author = author;
         this._sender = sender;
         this._reciver = reciver;
@@ -96,11 +96,11 @@ class Document{
         this._format = v;
     }
     //map
-    get map(){
-        return this._map;
+    get place(){
+        return this._place;
     }
-    set map(v){
-        this._map = v;
+    set place(v){
+        this._place = v;
     }
     //author
     get author(){

@@ -37,33 +37,31 @@ async function create(req,res,next){
     const senderId = req.body.senderId;
     const reciverId = req.body.reciverId;
     const context = req.body.context;
-    const photos = req.body.phothoPath;
+    const photos = req.body.phothoPaths;
     const colection = req.body.colection;
     const ubi = req.body.ubi;
-    const relationId = req.body.relationId;
-
+    const relations = req.body.relationId;
     
-    let map = await Place.findOne({"_id":placeId});
+    let place = await Place.findOne({"_id":placeId});
     let author = await Person.findOne({"_id":authorId});
-    let sender = await Person.find({"_id":senderId});
+    let sender = await Person.findOne({"_id":senderId});
     let reciver = await Person.findOne({"_id":reciverId});
-    let relation = await Person.findOne({"_id":relationId});
-
+    
 
     let document = new Document({
         title:title,
         date:date,
         description:description,
         format:format,
-        place:map,
+        place:place,
         author:author,
         sender:sender,
         reciver:reciver,
         context:context,
-        phothos:photos,
+        photos:photos,
         colection:colection,
         ubi:ubi,
-        relations:relation
+        relations:relations
     });
     
     document.save().then(obj => res.status(200).json({

@@ -15,7 +15,6 @@ const placeRouter = require('./routes/places');
 const docuementRouter = require('./routes/documents');
 const adminRouter = require('./routes/admin');
 const peopleRouter = require('./routes/people');
-const mapRouter = require('./routes/map');
 
 const jwtKey = config.get('secret.key');
 
@@ -59,7 +58,7 @@ app.use('/places',placeRouter);
 app.use('/documents',docuementRouter);
 app.use('/admin',adminRouter);
 app.use('/people',peopleRouter);
-app.use('/maps',mapRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,7 +6,7 @@ const schema = mongoose.Schema({
     _country:String,
     _city:String,
     _street:String,
-    _number:Number,
+    _number:String,
     _interior:String,
     _zip:String,
     _latitud:Number,

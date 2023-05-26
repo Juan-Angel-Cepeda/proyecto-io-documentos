@@ -32,23 +32,30 @@ async function create(req,res,next){
     
     const fatherId = req.body.fatherId;
     const motherId = req.body.motherId;
-    const childrenId = req.body.childrenId;
+    const childrenIds = req.body.childrenIds;
     
     const birth_place_id = req.body.birth_place_id;
     const death_place_id = req.body.death_place_id;
 
-
     let father = await Person.findOne({"_id":fatherId});
     let mother = await Person.findOne({"_id":motherId});
-    let children = await Person.findOne({"_id":childrenId});
     let birth_place = await Place.findOne({"_id":birth_place_id});
     let death_place = await Place.findOne({"_id":death_place_id});
+
+    let children = [];
+
+    if(childrenIds && childrenIds.length){
+        for(let i=0; i<childrenIds.length; i++){
+            let child = await Person.findOne({"_id":childrenIds[i]});
+            if(child) children.push(child);
+        }
+    }
 
     let person = new Person({
         name:name,
         lastName:lastName,
         date_of_birth:date_of_birth,
-        date_of_birth:date_of_death,
+        date_of_death:date_of_death,
         father:father,
         mother:mother,
         children:children,
@@ -63,7 +70,6 @@ async function create(req,res,next){
         message:"document not created",
         err:ex
     }))
-
 }
 
 function replace(req,res,next){
@@ -166,9 +172,48 @@ function destroy(req,res,next){
           }))
 }
 
-function addChildren(req,res,next){
+function addChild(req, res, next){
+    const personId = req.params.id;
+    const newChild = req.body.childId;
 
+    // Comprobamos si el niño existe
+    Person.findById(newChild, function(err, result) {
+        if(err) {
+            res.send(err);
+        } else if(!result) {
+            res.status(404).send("Child not found");
+        } else {
+            // Si el niño existe, lo añadimos a la persona
+            Person.findByIdAndUpdate(personId, {
+                $push: { _children: newChild }
+            },
+            { new: true, useFindAndModify: false }, // Esto asegura que se devuelva el documento actualizado
+            function(err, result){
+                if(err){
+                    res.send(err);
+                } else {
+                    res.send(result);
+                }
+            });
+        }
+    });
 }
 
+function removeChild(req, res, next){
+    const personId = req.params.id;
+    const childToRemove = req.body.childId;
 
-module.exports = {list,index,create,replace,update,destroy,addChildren};
+    Person.findByIdAndUpdate(personId, {
+        $pull: { _children: childToRemove }
+    },
+    { new: true }, // This option ensures that the updated document is returned
+    function(err, result){
+        if(err){
+            res.send(err);
+        } else {
+            res.send(result);
+        }
+    });
+}
+
+module.exports = {list,index,create,replace,update,destroy, addChild, removeChild};

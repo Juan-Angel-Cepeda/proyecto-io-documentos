@@ -20,7 +20,7 @@ function login(req, res, next){
         console.log(user);
         if(user){
             bcrypt.hash(password, user.salt, (err, hash) => {
-                console.log("llego hasta aqui 2"+ hash);
+                console.log("llego hasta aqui d"+ hash);
                 if(err){
                     res.status(403).json({
                         message: "Usuario y/o contrasena incorrecto 1",

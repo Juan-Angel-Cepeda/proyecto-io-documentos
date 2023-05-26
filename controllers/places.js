@@ -227,15 +227,5 @@ function destroy(req,res,next){
                 err:ex
             }));
 }
-function getMapsCoordenates(req,res,next){
-    Place.find().then(objs => res.status(200).json({
-        message:"Coordenates List",
-        obj:objs
-    })).catch(ex => res.status(500).json({
-        message: "Error no info",
-        obj:ex
-    }));
 
-}
-
-module.exports = {list,index,create,replace,update,destroy,getMapsCoordenates};
+module.exports = {list,index,create,replace,update,destroy};
