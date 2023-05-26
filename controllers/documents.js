@@ -37,7 +37,7 @@ async function create(req,res,next){
     const senderId = req.body.senderId;
     const reciverId = req.body.reciverId;
     const context = req.body.context;
-    const photos = req.body.phothoPaths;
+    const photos = req.body.photos;
     const colection = req.body.colection;
     const ubi = req.body.ubi;
     const relations = req.body.relationId;
