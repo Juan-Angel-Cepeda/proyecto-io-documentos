@@ -40,7 +40,7 @@ async function create(req,res,next){
     const photos = req.body.photos;
     const colection = req.body.colection;
     const ubi = req.body.ubi;
-    const relations = req.body.relationId;
+    const relations = req.body.relations;
     
     let place = await Place.findOne({"_id":placeId});
     let author = await Person.findOne({"_id":authorId});
