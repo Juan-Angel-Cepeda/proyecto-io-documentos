@@ -7,15 +7,15 @@ const schema = mongoose.Schema({
     _date_of_death:Date,
     _father:{
         type:mongoose.Schema.ObjectId,
-        ref:'People'
+        ref:'Person'
     },
     _mother:{
         type:mongoose.Schema.ObjectId,
-        ref:'People'
+        ref:'Person'
     },
     _children:[{
         type:mongoose.Schema.ObjectId,
-        ref:'People'
+        ref:'Person'
     }],
     _birth_place:{
         type:mongoose.Schema.ObjectId,
