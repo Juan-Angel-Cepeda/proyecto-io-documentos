@@ -44,9 +44,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(cors());
+app.use(cors('https://doc-story.netlify.app'));
 
-app.use(expressjwt({secret:jwtkey, algorithms:['HS256']})
+app.use(expressjwt({secret:jwtKey, algorithms:['HS256']})
    .unless({path:["/login","/institutions","/places","/documents","/","/people"]}));
 
 app.use('/', indexRouter);
