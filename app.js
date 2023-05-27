@@ -16,7 +16,7 @@ const docuementRouter = require('./routes/documents');
 const adminRouter = require('./routes/admin');
 const peopleRouter = require('./routes/people');
 
-//const jwtKey = config.get('secret.key');
+const jwtKey = config.get('secret.key');
 
 //mongodb conection
 const uri = config.get('dbChain');
@@ -46,8 +46,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 
-//app.use(expressjwt({secret:jwtkey, algorithms:['HS256']})
-//   .unless({path:["/login","/institutions","/places","/documents","/","/people"]}));
+app.use(expressjwt({secret:jwtkey, algorithms:['HS256']})
+   .unless({path:["/login","/institutions","/places","/documents","/","/people"]}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

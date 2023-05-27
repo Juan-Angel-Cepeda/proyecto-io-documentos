@@ -210,46 +210,5 @@ function destroy(req,res,next){
     }))
 
 }
-async function addPhotos(req,res,next){
-    const id = req.params.id;
-    const phothoPath = req.body.photopath;
-    let document = await Document.findOne({"_id":id});
-    document.phothos.push(phothoPath);
-    await document.save().then(obj=>res.status(200).json({
-        message:'Photo added',
-        obj:obj
-    })).catch(ex => res.status(500).json({
-        message:"Photo not added",
-        err:ex
-    }));
 
-}
-async function deletePhotos(req,res,next){
-    const id = req.params.id;
-    const phothoPath = req.body.phothoPath;
-    const document = await Document.findById({"_id":id});
-    const photoIndex = document.phothos.indexOf(phothoPath);
-    document.phothos.splice(photoIndex,1);
-    await document.save().then(obj=>res.status(200).json({
-        message:"Photo deleted",
-        obj:obj
-    })).catch(ex => res.status(500).json({
-        message:"Photo not deleted",
-        err:ex
-    }))
-    
-}
-function deleteRelations(req,res,next){
-    return relations
-}
-
-function addRelations(req,res,next){
-    return relations
-}
-
-//fucniones de buscar por algo
-function searchBy(){
-
-}
-module.exports = {list,index,create,replace,update,destroy,deletePhotos,deleteRelations,addRelations,
-addPhotos};
+module.exports = {list,index,create,replace,update,destroy};

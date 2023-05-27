@@ -30,8 +30,5 @@ router.post('/people',personcontroller.create);
 router.put('/people/:id',personcontroller.replace);
 router.patch('/people/:id',personcontroller.update);
 router.delete('/people/:id',personcontroller.destroy);
-router.put('/people/addChild/:id', personcontroller.addChild);
-router.put('/people/removeChild/:id', personcontroller.removeChild);
-
 
 module.exports = router;
